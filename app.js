@@ -6,9 +6,13 @@ const possibleChoices = document.querySelectorAll('button')
 possibleChoices.forEach(possibleChoice => possibleChoice.addEventListener('click', (e) => {
   userChoice = e.target.id
   userChoiceDisplay.innerHTML = userChoice
+  //Use the function generateComputerChoice to display the computers random calculation for rock, paper or scissors
   generateComputerChoice()
+  //Use the function getResult to display the button you clicked (rock, paper or scissors
+  getResult()
 }))
-// Generate a random # for the computer's choice
+
+// function that generates a random # for the computer's choice
 function generateComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3) + 1
 
@@ -20,4 +24,23 @@ function generateComputerChoice() {
     computerChoice = 'scissors'
   }
   computerChoiceDisplay.innerHTML = computerChoice 
+}
+//function that shows the results of computerChoice and userChoice functions to determine the winner of the game
+function getResult() {
+  if (computerChoice === 'rock' && userChoice === 'paper') {
+    result = 'You Win!'
+  } else if (computerChoice === 'rock' && userChoice === 'scissors' ) {
+    result = 'You Lost!'
+  } else if (computerChoice === 'paper' && userChoice === 'scissors') {
+    result = 'You Win!'
+  } else if (computerChoice === 'paper' && userChoice === 'rock') {
+    result = 'You Lose!'
+  } else if (computerChoice === 'scissors' && userChoice === 'rock') {
+    result = 'You Win!'
+  } else if (computerChoice === 'scissors' && userChoice === 'paper') {
+    result = 'You Lose!'
+  } else{(computerChoice === userChoice) 
+    result = 'It\'s a Draw'
+  }  
+  resultDisplay.innerHTML = result
 }
